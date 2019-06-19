@@ -1,6 +1,6 @@
 package com.ipartek.formacion;
 
-public class Person {
+public class Person implements IAmigable {
 
 	// atributos
 
@@ -98,6 +98,12 @@ public class Person {
 	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
+	
+	@Override
+	public String despedir() {
+		
+		return "Agur venur";
+	}
 
 	
 	@Override
@@ -105,5 +111,8 @@ public class Person {
 		return "Person [nombre=" + nombre + ", edad=" + edad + ", altura=" + altura + ", peso=" + peso + ", ojos="
 				+ ojos + ", sexo=" + sexo + "]";
 	}
+
+
+
 
 }

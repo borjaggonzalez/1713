@@ -10,6 +10,7 @@ public class AlumnoVoluntario {
 	static final String OPCION_ELIMINAR = "3";
 	static final String OPCION_VOLUNTARIO = "4";
 	static final String OPCION_SALIR = "0";
+	
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);

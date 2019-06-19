@@ -1,6 +1,6 @@
 package com.ipartek.formacion;
 
-public class Casa {
+public class Casa{
 	
 	
 	
