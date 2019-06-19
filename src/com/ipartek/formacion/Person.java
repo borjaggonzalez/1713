@@ -34,6 +34,11 @@ public class Person {
 		this.sexo = sexo;
 	}
 	
+	public Person(String nombre) {
+		this();
+		this.setNombre(nombre);
+	
+	}
 	
 	
 	public String saludar() {

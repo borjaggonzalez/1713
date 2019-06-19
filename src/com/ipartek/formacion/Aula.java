@@ -4,25 +4,18 @@ import java.util.ArrayList;
 
 public class Aula {
 
+	private static ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
 	public static void main(String[] args) {
 
 		// Declarar array con nombre alumnos
 
+		String[] lalumnos = { "Ander", "Mounir", "Andoni", "Asier", "Jon C", "Arkaitz", "Aritz", "Manuel", "Eder I",
+				"Eder S", "Gaizka", "Borja", "Verónica", "Jon A", "José Luis" };
 
-		  String[] lalumnos = { "Ander", "Mounir", "Andoni", "Asier", "Jon C",
-		  "Arkaitz", "Aritz", "Manuel", "Eduardo", "Eder I", "Eder S", "Gaizka",
-		 "Borja", "Verónica", "Jon A", "José Luis" };
-		  
-		
-		  ArrayList<Person> alumnos= new ArrayList<Person>();
-		Person p;
-		
+	
 		for (int i = 0; i < lalumnos.length; i++) {
-			p = new Person();
-			p.setNombre(lalumnos[i]);
-			alumnos.add(p);
+			alumnos.add(new Alumno(lalumnos[i]));
 		}
-		
 
 		// Generar numero aleatorio 0 - alumnos.length
 		int voluntario = (int) (Math.random() * alumnos.size());
@@ -33,7 +26,7 @@ public class Aula {
 
 			if (voluntario != i) {
 
-				System.out.println(i + " " + alumnos.get(i));
+				System.out.println(i + " " + alumnos.get(i).getNombre());
 
 			} else {
 
@@ -42,6 +35,50 @@ public class Aula {
 			}
 
 		} // end for
+
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	
+	public static ArrayList<Alumno> CargarAlumnos() {
+
+		String[] lalumnos = { "Ander", "Mounir", "Andoni", "Asier", "Jon C", "Arkaitz", "Aritz", "Manuel", "Eder I",
+				"Eder S", "Gaizka", "Borja", "Verónica", "Jon A", "José Luis" };
+	
+		Alumno a;
+		for (int i = 0; i < lalumnos.length; i++) {
+			a = new Alumno(lalumnos[i]);
+			alumnos.add(a);
+		}
+
+		return alumnos;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public static ArrayList<Alumno> ListarAlumnos() {
+
+		for (int i = 0; i < alumnos.size(); i++) {
+
+			System.out.println(alumnos.get(i).getNombre()+ " " + alumnos.get(i).getNveces());
+
+		}
+
+		return alumnos;
+	}
+
+	public static void BuscarVoluntario() {
+
+		int voluntario = (int) (Math.random() * alumnos.size());
+		alumnos.get(voluntario).setNveces(alumnos.get(voluntario).getNveces()+1);
+		// Mostrar voluntario para leer
+		System.out.println("El voluntario es:");
+		System.out.println(alumnos.get(voluntario).getNombre());
 
 	}
 
