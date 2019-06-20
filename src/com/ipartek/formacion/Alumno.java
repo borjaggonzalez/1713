@@ -6,6 +6,8 @@ public class Alumno extends Person implements Comparable<Alumno>{
 
 	public Alumno(String nombre) {
 		super(nombre);
+		super.setId(-1);
+		this.setNveces(0);
 	}
 	
 	public Alumno(String nombre, int veces) {

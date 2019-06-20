@@ -1,10 +1,13 @@
 package com.ipartek.formacion;
 
-public class Person implements IAmigable {
+public class Person{
 
 	// atributos
 
 
+
+
+	private int id;
 	private String nombre;
 	private int edad;
 	private float altura; // 1.70 metros
@@ -15,13 +18,14 @@ public class Person implements IAmigable {
 	
 
 	public Person() {
-		super();
-		nombre = "Anonimo";
-		edad = 18;
-		altura = 0;
-		peso = 0;
-		ojos="Marrones";
-		sexo = 'i';
+		super(); //java.lang.Object
+		this.id = -1;
+		this.nombre = "Anonimo";
+		this.edad = 18;
+		this.altura = 0;
+		this.peso = 0;
+		this.ojos="Marrones";
+		this.sexo = 'i';
 		
 	}
 
@@ -33,6 +37,14 @@ public class Person implements IAmigable {
 		this.edad = edad;
 		this.sexo = sexo;
 	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	
 	public Person(String nombre) {
 		this();
@@ -98,20 +110,16 @@ public class Person implements IAmigable {
 	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
-	
-	@Override
-	public String despedir() {
-		
-		return "Agur venur";
-	}
 
-	
+
+
 	@Override
 	public String toString() {
-		return "Person [nombre=" + nombre + ", edad=" + edad + ", altura=" + altura + ", peso=" + peso + ", ojos="
-				+ ojos + ", sexo=" + sexo + "]";
+		return "Person [id=" + id + ", nombre=" + nombre + ", edad=" + edad + ", altura=" + altura + ", peso=" + peso
+				+ ", ojos=" + ojos + ", sexo=" + sexo + "]";
 	}
-
+	
+	
 
 
 
