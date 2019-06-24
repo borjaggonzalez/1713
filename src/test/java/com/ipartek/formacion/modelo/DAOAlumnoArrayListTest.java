@@ -24,6 +24,7 @@ public class DAOAlumnoArrayListTest {
 
 	@Before
 	public void setUp() throws Exception {
+		
 		dao = DAOAlumnoArrayList.getInstance();
 	}
 
@@ -32,12 +33,9 @@ public class DAOAlumnoArrayListTest {
 
 		// TODO lunes
 		// borrar objetos de la lista
-		/*
-		 * for (int i = 0; i < dao.getAll().size(); i++) {
-		 * 
-		 * dao.delete( dao.getById(i).getId() );
-		 * 
-		 */
+		 for (int i = 0; i < dao.getAll().size(); i++) {
+		  dao.delete(dao.getAll().get(i).getId());
+		 }
 		dao = null;
 		System.out.println("");
 	}
@@ -91,18 +89,19 @@ public class DAOAlumnoArrayListTest {
 	@Test
 	public void testDelete() {
 
+		assertFalse(dao.delete(-1));
+		
 		Alumno alumno = new Alumno("");
-		alumno.setId(-1);
+		alumno.setId(1);
 		dao.insert(alumno);
 		assertTrue(dao.delete(1));
 
-		assertFalse(dao.delete(-1));
 	}
 
 	@Test
 	public void testUpdate() {
 
-		Alumno alumno = new Alumno("Manolo");
+		Alumno alumno = new Alumno("Manolo",0);
 		alumno.setId(1);
 		dao.insert(alumno);
 
