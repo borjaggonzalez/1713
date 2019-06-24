@@ -1,12 +1,18 @@
 package com.ipartek.formacion;
 
-public class Person{
+import java.io.Serializable;
+
+public class Person implements Serializable{
 
 	// atributos
 
 
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String nombre;
 	private int edad;

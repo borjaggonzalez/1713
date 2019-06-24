@@ -1,6 +1,8 @@
 package com.ipartek.formacion;
 
-public class Alumno extends Person implements Comparable<Alumno>{
+import java.io.Serializable;
+
+public class Alumno extends Person implements Comparable<Alumno>, Serializable{
 
 	private  int nveces;
 
@@ -21,6 +23,13 @@ public class Alumno extends Person implements Comparable<Alumno>{
 
 	public void setNveces(int nveces) {
 		this.nveces = nveces;
+	}
+
+	
+	
+	@Override
+	public String toString() {
+		return super.toString()+ "Alumno [nveces=" + nveces + "]";
 	}
 
 	@Override
