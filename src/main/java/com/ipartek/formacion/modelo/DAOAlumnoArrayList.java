@@ -1,16 +1,32 @@
 package com.ipartek.formacion.modelo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 
 import com.ipartek.formacion.Alumno;
 
 public class DAOAlumnoArrayList implements ICrudAble<Alumno> {
 
+	private static DAOAlumnoArrayList INSTANCE;
 	private ArrayList<Alumno> lista;
 
-	public DAOAlumnoArrayList() {
+	/**
+	 * Encargado de devolver solo un objeto, patron Singleton
+	 * 
+	 * @return
+	 */
+	public static synchronized DAOAlumnoArrayList getInstance() {
+		if (INSTANCE == null) {
+			INSTANCE = new DAOAlumnoArrayList();
+		}
+		return INSTANCE;
+	}
+
+	/**
+	 * Privado para que nadie pueda crear objetos
+	 */
+	private DAOAlumnoArrayList() {
 		super();
 		this.lista = new ArrayList<Alumno>();
 	}
@@ -34,8 +50,11 @@ public class DAOAlumnoArrayList implements ICrudAble<Alumno> {
 
 	@Override
 	public boolean insert(Alumno pojo) {
-
-		return lista.add(pojo);
+		boolean resul = false;
+		if (pojo != null) {
+			resul = lista.add(pojo);
+		}
+		return resul;
 	}
 
 	@Override
@@ -56,14 +75,30 @@ public class DAOAlumnoArrayList implements ICrudAble<Alumno> {
 
 	@Override
 	public boolean update(Alumno pojo) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean resul = false; 
+		
+		if ( pojo != null ) {
+		
+			for (Alumno a: lista) {
+				
+				if ( a.getId() == pojo.getId() ) {
+					//modificar
+					int pos = lista.indexOf(a);
+					lista.set( pos , pojo);
+					resul = true;
+					break;
+				}
+			}
+		}	
+		
+		
+		return resul;
 	}
 
-	public ArrayList<Alumno> CargarAlumnos() {
+	public ArrayList<Alumno> cargarAlumnos() {
 
 		String[] lalumnos = { "Ander", "Mounir", "Andoni", "Asier", "Jon C", "Arkaitz", "Aritz", "Manuel", "Eder I",
-				"Eder S", "Gaizka", "Borja", "Verónica", "Jon A", "José Luis" };
+				"Eder S", "Gaizka", "Borja", "VerÃ³nica", "Jon A", "JosÃ© Luis" };
 
 		Alumno a;
 		for (int i = 0; i < lalumnos.length; i++) {
@@ -73,6 +108,20 @@ public class DAOAlumnoArrayList implements ICrudAble<Alumno> {
 		}
 
 		return lista;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public ArrayList<Alumno> pintarResul(ArrayList<Alumno> alumnos) {
+		Collections.sort(alumnos);
+		for (int i = 0; i < alumnos.size(); i++) {
+			System.out.println(i + 1 + " -" + alumnos.get(i).getNombre() + " " + alumnos.get(i).getNveces());
+
+		}
+		System.out.println("Alumnos totales: " + alumnos.size());
+		return alumnos;
 	}
 
 }

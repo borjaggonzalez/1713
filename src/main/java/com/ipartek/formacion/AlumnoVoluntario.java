@@ -20,20 +20,19 @@ public class AlumnoVoluntario {
 	public static void main(String[] args) {
 
 		sc = new Scanner(System.in);
-		dao = new DAOAlumnoArrayList();
+		dao = DAOAlumnoArrayList.getInstance();
 
 		String op;
-		dao.CargarAlumnos();
+		dao.cargarAlumnos();
 		do {
 			// Elegir Opcion
 			MostrarMenu();
 			op = sc.nextLine().trim();
-
 			switch (op) {
 
 			case OPCION_LISTAR:
 				alumnos = (ArrayList<Alumno>) dao.getAll();
-				Aula.pintarResul(alumnos);
+				dao.pintarResul(alumnos);
 
 				break;
 			case OPCION_CREAR:
@@ -48,6 +47,9 @@ public class AlumnoVoluntario {
 				BuscarVoluntario();
 				break;
 
+			default:
+				System.out.println("No has introducido una opcion o la opcion no es valida\n");
+				break;
 			}
 
 		} while (!op.equals(OPCION_SALIR));

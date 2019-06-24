@@ -13,7 +13,7 @@ public class Aula {
 		// Declarar array con nombre alumnos
 
 		String[] lalumnos = { "Ander", "Mounir", "Andoni", "Asier", "Jon C", "Arkaitz", "Aritz", "Manuel", "Eder I",
-				"Eder S", "Gaizka", "Borja", "Verónica", "Jon A", "José Luis" };
+				"Eder S", "Gaizka", "Borja", "Verï¿½nica", "Jon A", "Josï¿½ Luis" };
 
 		for (int i = 0; i < lalumnos.length; i++) {
 			alumnos.add(new Alumno(lalumnos[i]));
@@ -40,19 +40,7 @@ public class Aula {
 
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
-	public static ArrayList<Alumno> pintarResul(ArrayList<Alumno> alumnos) {
-		Collections.sort(alumnos);
-		for (int i = 0; i < alumnos.size(); i++) {
-				System.out.println(i+1 +" -" +alumnos.get(i).getNombre() + " " + alumnos.get(i).getNveces());
-				
-		}
-		System.out.println("Alumnos totales: "+alumnos.size());
-		return alumnos;
-	}
+	
 
 	
 
